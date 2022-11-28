@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 typedef _Notifier
     = AsyncNotifierProviderFamily<PermissionProvider, bool, Directory?>;
@@ -21,5 +22,10 @@ class PermissionProvider extends FamilyAsyncNotifier<bool, Directory?> {
       debugPrint('$e');
       return false;
     }
+  }
+
+  Future<void> getPermission() async {
+    final status = await Permission.manageExternalStorage.status;
+    debugPrint('$state');
   }
 }
