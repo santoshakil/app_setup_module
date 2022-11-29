@@ -17,11 +17,11 @@
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
     </application>
   </compatibility>
-  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
+  <!-- <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
-      <requestedPrivileges>
-        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
-      </requestedPrivileges>
+        <requestedPrivileges>
+            <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+        </requestedPrivileges>
     </security>
-  </trustInfo>
+  </trustInfo> -->
 </assembly>
