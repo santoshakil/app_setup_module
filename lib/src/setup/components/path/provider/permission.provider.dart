@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 
 typedef _Notifier
     = AsyncNotifierProviderFamily<PermissionProvider, bool, Directory?>;
@@ -24,13 +23,5 @@ class PermissionProvider extends FamilyAsyncNotifier<bool, Directory?> {
     }
   }
 
-  Future<void> getPermission() async {
-    final dir = Directory(join(arg!.path, 'test'));
-    final exist = await dir.exists();
-    if (!exist) await dir.create();
-    final name = DateTime.now().toIso8601String();
-    final file = File(join(dir.path, '$name.txt'));
-    await file.create();
-    await file.writeAsString(name);
-  }
+  Future<void> getPermission() async {}
 }

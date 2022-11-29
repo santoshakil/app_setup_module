@@ -19,7 +19,13 @@ class DBPathProvider extends AsyncNotifier<Directory> {
   }
 
   Future<void> create() async {
-    final file = Directory(join(state.value!.path, 'temp'));
-    if (!(await file.exists())) await file.create();
+    if (state.value == null) return;
+    final dir = Directory(join(state.value!.path, 'test'));
+    final exist = await dir.exists();
+    if (!exist) await dir.create();
+    final name = DateTime.now().toIso8601String();
+    final file = File(join(dir.path, '$name.txt'));
+    await file.create();
+    await file.writeAsString(name);
   }
 }

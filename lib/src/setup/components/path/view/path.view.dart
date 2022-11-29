@@ -32,16 +32,14 @@ class _Next extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final path = ref.watch(dbPathProvider).value;
     if (path == null) return const SizedBox.shrink();
-    // final permitted = ref.watch(permissionProvider(path)).value ?? false;
+    final permitted = ref.watch(permissionProvider(path)).value ?? false;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: ElevatedButton(
-        // onPressed: permitted
-        //     ? () async => await ref.read(dbPathProvider.notifier).create()
-        //     : null,
-        onPressed: () async =>
-            await ref.read(permissionProvider(path).notifier).getPermission(),
+        onPressed: permitted
+            ? () async => await ref.read(dbPathProvider.notifier).create()
+            : null,
         child: const Text('Next'),
       ),
     );
