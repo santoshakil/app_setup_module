@@ -21,13 +21,13 @@ class DBPathProvider extends AsyncNotifier<Directory?> {
   FutureOr<Directory?> build() async {
     final currentDir = Directory.current;
     final permitted = await ref.read(permissionProvider(currentDir).future);
-    if (permitted) return Directory(join(currentDir.path, appName));
+    if (permitted) return Directory(join(currentDir.path, '.$appName'));
     final supportDir = await getApplicationSupportDirectory();
     final permitted2 = await ref.read(permissionProvider(supportDir).future);
-    if (permitted2) return Directory(join(supportDir.path, appName));
+    if (permitted2) return Directory(join(supportDir.path, '.$appName'));
     final docDir = await getApplicationDocumentsDirectory();
     final permitted3 = await ref.read(permissionProvider(docDir).future);
-    if (permitted3) return Directory(join(docDir.path, appName));
+    if (permitted3) return Directory(join(docDir.path, '.$appName'));
     return null;
   }
 
