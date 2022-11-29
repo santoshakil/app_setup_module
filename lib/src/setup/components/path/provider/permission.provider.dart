@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../main.dart';
+
 typedef _Notifier
     = AsyncNotifierProviderFamily<PermissionProvider, bool, Directory?>;
 
@@ -15,7 +17,8 @@ class PermissionProvider extends FamilyAsyncNotifier<bool, Directory?> {
     if (arg == null) return false;
 
     try {
-      final dir = await arg.createTemp();
+      final dir = Directory('.${appName}_temp');
+      await dir.create(recursive: true);
       await dir.delete();
       return true;
     } on Exception catch (e) {

@@ -36,7 +36,9 @@ class DBPathProvider extends AsyncNotifier<Directory?> {
 
   Future<void> select() async {
     final selected = await FilePicker.platform.getDirectoryPath();
-    if (selected != null) state = AsyncValue.data(Directory(selected));
+    if (selected == null) return;
+    final dir = Directory(join(selected, '.$appName'));
+    state = AsyncValue.data(dir);
   }
 
   Future<void> next() async {
