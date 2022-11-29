@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'db/db.dart';
+import 'home/view/home.dart';
 import 'setup/view/setup.view.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,10 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProviderScope(
+    return ProviderScope(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SetupView(),
+        home: dbDir != null ? const HomeView() : const SetupView(),
       ),
     );
   }

@@ -16,9 +16,7 @@ class PathView extends StatelessWidget {
         const DBSelectorTile(),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            _Next(),
-          ],
+          children: const [_Reset(), _Next()],
         ),
       ],
     );
@@ -38,10 +36,22 @@ class _Next extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: ElevatedButton(
         onPressed: permitted
-            ? () async => await ref.read(dbPathProvider.notifier).create()
+            ? () async => await ref.read(dbPathProvider.notifier).next()
             : null,
         child: const Text('Next'),
       ),
+    );
+  }
+}
+
+class _Reset extends ConsumerWidget {
+  const _Reset();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return TextButton(
+      onPressed: () => ref.invalidate(dbPathProvider),
+      child: const Text('Reset'),
     );
   }
 }
