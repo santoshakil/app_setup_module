@@ -1,7 +1,6 @@
 name: app_setup_module
 description: A new Flutter project.
 
-# Prevent accidental publishing to pub.dev.
 publish_to: "none"
 
 version: 1.0.0+1
@@ -16,16 +15,23 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.1.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  isar: ^3.0.5
+  isar_flutter_libs: ^3.0.5
   path: ^1.8.2
   path_provider: ^2.0.11
   permission_handler: ^10.2.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
   msix: ^3.7.0
+  isar_generator: ^3.0.5
+  build_runner: ^2.3.2
 
 flutter:
   uses-material-design: true
