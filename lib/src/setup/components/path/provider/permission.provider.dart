@@ -26,6 +26,6 @@ class PermissionProvider extends FamilyAsyncNotifier<bool, Directory?> {
 
   Future<void> getPermission() async {
     final status = await Permission.manageExternalStorage.status;
-    debugPrint('$state');
+    debugPrint('$status');
   }
 }
