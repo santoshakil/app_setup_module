@@ -15,7 +15,8 @@ class PermissionProvider extends FamilyAsyncNotifier<bool, Directory?> {
     if (arg == null) return false;
 
     try {
-      await arg.createTemp();
+      final dir = await arg.createTemp();
+      await dir.delete();
       return true;
     } on Exception catch (e) {
       debugPrint('$e');
