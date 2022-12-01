@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,15 +12,21 @@ class PathView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const DBSelectorTile(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [_Reset(), _Next()],
+    final size = MediaQuery.of(context).size;
+    return Center(
+      child: SizedBox(
+        width: min(size.width, 500),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const DBSelectorTile(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [_Reset(), _Next()],
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
